@@ -1,0 +1,20 @@
+{
+	"name": "powerquery1",
+	"properties": {
+		"type": "WranglingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"name": "AzureSqlTable3",
+					"script": "source(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tisolationLevel: 'READ_UNCOMMITTED',\n\tformat: 'table') ~> AzureSqlTable3",
+					"dataset": {
+						"referenceName": "AzureSqlTable3",
+						"type": "DatasetReference"
+					}
+				}
+			],
+			"script": "section Section1;\r\nshared AzureSqlTable3 = let AdfDoc = Sql.Database(\"sql-train.database.windows.net\", \"sql-train\", [CreateNavigationProperties = false]), InputTable = AdfDoc{[Schema=\"SalesLT\",Item=\"Customer\"]}[Data] in InputTable;\r\nshared UserQuery = let Source = #\"AzureSqlTable3\" in Source;\r\n",
+			"documentLocale": "en-us"
+		}
+	}
+}

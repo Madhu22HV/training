@@ -1,0 +1,15 @@
+{
+	"name": "train-adf",
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned,UserAssigned",
+		"principalId": "7fb71d73-1576-4e43-baf7-8f30fb130b4c",
+		"tenantId": "00ee89b7-3bc1-4717-bcae-0c3bb5b6181d",
+		"userAssignedIdentities": {
+			"/subscriptions/4e6bf364-61d6-4081-a30b-bf89512f17a1/resourcegroups/SQLTRAIN-RG/providers/Microsoft.ManagedIdentity/userAssignedIdentities/train-sql-managed-identity": {
+				"clientId": "af537654-4b37-4777-9f30-695962d3daf3",
+				"principalId": "644594ae-f6a8-4ba0-a3fd-1058af8482e2"
+			}
+		}
+	}
+}
