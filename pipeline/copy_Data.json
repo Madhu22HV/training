@@ -53,15 +53,15 @@
 						"type": "DatasetReference",
 						"parameters": {
 							"container": {
-								"value": "@pipeline().parameters.container",
+								"value": "@pipeline().parameters.container_input",
 								"type": "Expression"
 							},
 							"file_path": {
-								"value": "@pipeline().parameters.file_path",
+								"value": "@pipeline().parameters.file_path_input",
 								"type": "Expression"
 							},
 							"file_name": {
-								"value": "@pipeline().parameters.file_name",
+								"value": "@pipeline().parameters.file_name_input",
 								"type": "Expression"
 							}
 						}
@@ -73,15 +73,15 @@
 						"type": "DatasetReference",
 						"parameters": {
 							"container": {
-								"value": "@pipeline().parameters.container",
+								"value": "@pipeline().parameters.container_output",
 								"type": "Expression"
 							},
 							"file_path": {
-								"value": "@pipeline().parameters.file_path",
+								"value": "@pipeline().parameters.file_path_output",
 								"type": "Expression"
 							},
 							"file_name": {
-								"value": "@pipeline().parameters.file_name",
+								"value": "@pipeline().parameters.file_name_output",
 								"type": "Expression"
 							}
 						}
@@ -90,14 +90,27 @@
 			}
 		],
 		"parameters": {
-			"container": {
+			"container_input": {
+				"type": "string",
+				"defaultValue": "input"
+			},
+			"file_path_input": {
 				"type": "string"
 			},
-			"file_path": {
+			"file_name_input": {
+				"type": "string",
+				"defaultValue": "sf-fire-incidents.csv"
+			},
+			"container_output": {
+				"type": "string",
+				"defaultValue": "output"
+			},
+			"file_path_output": {
 				"type": "string"
 			},
-			"file_name": {
-				"type": "string"
+			"file_name_output": {
+				"type": "string",
+				"defaultValue": "sf-fire-incidents_out.csv"
 			}
 		},
 		"annotations": []
