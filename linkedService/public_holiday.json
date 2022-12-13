@@ -1,0 +1,10 @@
+{
+	"name": "public_holiday",
+	"properties": {
+		"annotations": [],
+		"type": "AzureBlobStorage",
+		"typeProperties": {
+			"sasUri": "https://azureopendatastorage.blob.core.windows.net/holidaydatacontainer/Processed?\"\""
+		}
+	}
+}
