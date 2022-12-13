@@ -1,0 +1,17 @@
+{
+	"name": "SQL script 4",
+	"properties": {
+		"content": {
+			"query": "CREATE TABLE [dbo].[Trip]\n(\n[DateID] int NOT NULL,\n[MedallionID] int NOT NULL,\n[HackneyLicenseID] int NOT NULL,\n[PickupTimeID] int NOT NULL,\n[DropoffTimeID] int NOT NULL,\n[PickupGeographyID] int NULL,\n[DropoffGeographyID] int NULL,\n[PickupLatitude] float NULL,\n[PickupLongitude] float NULL,\n[PickupLatLong] varchar(50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,\n[DropoffLatitude] float NULL,\n[DropoffLongitude] float NULL,\n[DropoffLatLong] varchar(50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,\n[PassengerCount] int NULL,\n[TripDurationSeconds] int NULL,\n[TripDistanceMiles] float NULL,\n[PaymentType] varchar(50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,\n[FareAmount] money NULL,\n[SurchargeAmount] money NULL,\n[TaxAmount] money NULL,\n[TipAmount] money NULL,\n[TollsAmount] money NULL,\n[TotalAmount] money NULL\n)\nWITH\n(\nDISTRIBUTION = ROUND_ROBIN,\nCLUSTERED COLUMNSTORE INDEX\n);\nCOPY INTO [dbo].[Trip]\nFROM 'https://nytaxiblob.blob.core.windows.net/2013/Trip2013'\nWITH\n(\nFILE_TYPE = 'CSV',\nFIELDTERMINATOR = '|',\nFIELDQUOTE = '',\nROWTERMINATOR='0X0A',\nCOMPRESSION = 'GZIP'\n)\nOPTION (LABEL = 'COPY : Load [dbo].[Trip] - Taxi dataset');",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "train_sql_pool",
+				"poolName": "train_sql_pool"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}
