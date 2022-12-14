@@ -1,0 +1,17 @@
+{
+	"name": "SQL script 7",
+	"properties": {
+		"content": {
+			"query": "select passengercount,sum(tripdistancemiles),\navg(tripdistancemiles)\nFROM\n    dbo.trip\n    where passengercount > 0\n    and tripdistancemiles > 0\n    group by passengercount\n    order by passengercount\n",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "train_sql_pool",
+				"poolName": "train_sql_pool"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}

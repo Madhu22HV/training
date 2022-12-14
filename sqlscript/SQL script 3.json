@@ -2,7 +2,7 @@
 	"name": "SQL script 3",
 	"properties": {
 		"content": {
-			"query": "select count(*)\nFROM\n    OPENROWSET(\n        BULK 'https://azureopendatastorage.blob.core.windows.net/nyctlc/yellow/puYear=*/puMonth=*/*.parquet',\n        FORMAT='PARQUET'\n    ) AS [nyc]\n",
+			"query": "select top 10 *\nFROM\n    OPENROWSET(\n        BULK 'https://azureopendatastorage.blob.core.windows.net/nyctlc/yellow/puYear=*/puMonth=*/*.parquet',\n        FORMAT='PARQUET'\n    ) AS [nyc]\n\nselect passengercount,sum(tripdistance),\navg(tripdistance)\nFROM\n    OPENROWSET(\n        BULK 'https://azureopendatastorage.blob.core.windows.net/nyctlc/yellow/puYear=*/puMonth=*/*.parquet',\n        FORMAT='PARQUET'\n    ) AS [nyc]\n    where passengercount > 0\n    and tripdistance > 0\n    group by passengercount\n    order by passengercount\n\nwith cte as (\n    select passengercount,sum(tripdistance) as sumtripdistance,\navg(tripdistance) avgtripdistance\nFROM\n    OPENROWSET(\n        BULK 'https://azureopendatastorage.blob.core.windows.net/nyctlc/yellow/puYear=*/puMonth=*/*.parquet',\n        FORMAT='PARQUET'\n    ) AS [nyc]\n    where passengercount > 0\n    and tripdistance > 0\n    group by passengercount\n    )\n    select * from cte where passengercount < 5\n\n\n\n\n",
 			"metadata": {
 				"language": "sql"
 			},
