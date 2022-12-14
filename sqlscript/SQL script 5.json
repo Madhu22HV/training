@@ -2,7 +2,7 @@
 	"name": "SQL script 5",
 	"properties": {
 		"content": {
-			"query": "select top 10 * from dbo.trip\n\nselect passengercount,sum(tripdistancemiles),\navg(tripdistancemiles)\nFROM\n    dbo.trip\n    where passengercount > 0\n    and tripdistancemiles > 0\n    group by passengercount\n    order by passengercount\n\n",
+			"query": "select top 10 * from dbo.trip\n\nselect passengercount,sum(tripdistancemiles),\navg(tripdistancemiles)\nFROM\n    dbo.trip\n    where passengercount > 0\n    and tripdistancemiles > 0\n    group by passengercount\n    order by passengercount\n\nselect top 10 *\nFROM\n    dbo.trip as a\n    join dbo.trip \n",
 			"metadata": {
 				"language": "sql"
 			},
